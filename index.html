@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-        <script 
-          src="https://code.jquery.com/jquery-3.2.1.min.js"
-          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-          crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" ></script>
-    </head>
-    <body>
-        <header>
-            <h1>E-Sports Madness</h1>
-            <p>Pagina web de final de Ciclo</p>
-        </header>
-        <ul id="proyecto">
-            <h3>Lista Juegos</h3>
-            <div v-for='juego in juegos' class="juegos">
-                {{juego}}
-            </div>
-            <br>
-            <h3>Lista Ligas</h3>
-            <div v-for='liga in ligas' class="ligas">
-                {{liga}}
-            </div>
-            <br>
-            <h3>Lista Equipos</h3>
-            <div v-for='equipo in equipos' class="equipos">
-                {{equipo}}
-            </div>
-        </ul>
-    </body>
-    <script src="https://unpkg.com/axios/dist/axios.min.js" ></script>
-    <script src="js/funcions.js"></script>
-    <!--<script src="js/componentes.js"></script>-->
+
+<head>
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>E-Sports Madness</h1>
+        <p>Pagina web de final de Ciclo</p>
+    </header>
+    <ul id="proyecto">
+        <h3>Lista Juegos</h3>
+        <div v-for='juego in juegos' class="juegos">
+            {{juego}}
+        </div>
+        <br>
+        <h3>Lista Ligas</h3>
+        <div v-for='liga in ligas' class="ligas">
+            {{liga}}
+        </div>
+        <br>
+        <h3>Lista Equipos</h3>
+        <div v-for='equipo in equipos' class="equipos">
+            <h1>{{equipo.Nombre}}</h1>
+            <img v-bind:src="'./IMG/Equipos/' + equipo.Logo" width="100" height="100" />
+        </div>
+    </ul>
+</body>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="js/funcions.js"></script>
+<!--<script src="js/componentes.js"></script>-->
+
 </html>
