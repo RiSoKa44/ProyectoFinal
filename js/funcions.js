@@ -1,51 +1,40 @@
-var todo = new Vue({
-    el: '#todo',
+var Fantasy = new Vue({
+    el: '#proyecto',
     data: {
-        tareas: null,
+        equipos: null,
+        juegos: null,
+        ligas: null,
     },
     created: function(){
         this.GETTODOS();
-    },
-    mounted: function(){
-        document.getElementById("todoInput").addEventListener('keyup', function(event){
-            if(event.keyCode===13){
-                todo.POSTTODO();
-            }
-        })
+        this.GETTODOS2();
+        this.GETTODOS3();
     },
 
     methods: {
         GETTODOS: function() {
-            axios.get('http://esports-madness.electronica-garcilaso.cat/')
+            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Juegos')
                 .then(response => {
-                    this.tareas = response.data,
+                    this.juegos = response.data,
                     console.table(response.data);
                 })
                 .catch(error => console.error(error));
         },
-
-        DELETETODO: function(id) {
-            axios.delete(`http://esports-madness.electronica-garcilaso.cat`).then(
-                this.GETTODOS()
-            )
-            .catch(error => console.error(error))
-        },
-
-        UPDATETODO: function(id, status){
-            let isDone=status?false:true;
-            axios.put(`http://esports-madness.electronica-garcilaso.cat/`,{'completed' : isDone}).then(
-                this.GETTODOS()
-            )
-            .catch(error => console.error(error));
-        },
-
-        POSTTODO: function() {
-            let newTodo = document.getElementById("todoInput").value
-            axios.post(`http://esports-madness.electronica-garcilaso.cat/`, { "name": newTodo })
-                .then(
-                    this.UPDATETODO()
-                )
+        GETTODOS2: function() {
+            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Equipos')
+                .then(response => {
+                    this.equipos = response.data,
+                    console.table(response.data);
+                })
                 .catch(error => console.error(error));
-        }
+        },
+        GETTODOS3: function() {
+            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Ligas')
+                .then(response => {
+                    this.ligas = response.data,
+                    console.table(response.data);
+                })
+                .catch(error => console.error(error));
+        },
     }
 })
