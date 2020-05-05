@@ -11197,7 +11197,7 @@ namespace Tqdev\PhpCrudApi {
 
     $config = new Config([
         // 'driver' => 'mysql',
-        // 'address' => 'localhost',
+        'address' => 'bbdd.electronica-garcilaso.cat',
         'username' => 'ddb148915',
         'password' => '/^cns1B/TfDP',
         'database' => 'ddb148915',
