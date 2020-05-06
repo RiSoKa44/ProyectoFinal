@@ -1,23 +1,18 @@
 var Fantasy = new Vue({
     el: '#proyecto',
     data: {
-        equipos: [],
-        juegos: [],
-        ligas: [],
-        jugadores: [],
-        entrenadores: [],
+        equipos: null,
+        juegos: null,
+        ligas: null,
+        jugadores: null,
+        entrenadores: null,
     },
     created: function() {
-        this.GETTODOS();
-        this.GETTODOS2();
-        this.GETTODOS3();
-        this.GETTODOS4();
-        this.GETTODOS5();
-
+        this.getJuegos();
     },
 
     methods: {
-        GETTODOS: function() {
+        getJuegos: function() {
             axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Juegos')
                 .then(response => {
                     this.juegos = response.data.records,
@@ -25,32 +20,37 @@ var Fantasy = new Vue({
                 })
                 .catch(error => console.error(error));
         },
-        GETTODOS2: function() {
-            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Equipos')
+        getEquipos: function(ID) {
+            this.jugadores=null;
+            this.entrenadores=null;
+            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Equipos?filter=ID_Liga,eq,'+ ID)
                 .then(response => {
                     this.equipos = response.data.records,
                         console.table(response.data);
                 })
                 .catch(error => console.error(error));
         },
-        GETTODOS3: function() {
-            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Ligas')
+        getLigas: function(ID) {
+            this.equipos=null;
+            this.jugadores=null;
+            this.entrenadores=null;
+            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Ligas?filter=Juego,eq,'+ ID)
                 .then(response => {
                     this.ligas = response.data.records,
                         console.table(response.data);
                 })
                 .catch(error => console.error(error));
         },
-        GETTODOS4: function() {
-            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Jugador')
+        getJugadores: function(ID) {
+            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Jugador?filter=Equipo,eq,'+ ID)
                 .then(response => {
                     this.jugadores = response.data.records,
                         console.table(response.data);
                 })
                 .catch(error => console.error(error));
         },
-        GETTODOS5: function() {
-            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Entrenadores')
+        getEntrenadores: function(ID) {
+            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Entrenadores?filter=Equipo,eq,'+ ID)
                 .then(response => {
                     this.entrenadores = response.data.records,
                         console.table(response.data);
