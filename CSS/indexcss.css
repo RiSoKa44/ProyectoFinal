@@ -1,9 +1,116 @@
+/* Body Colors */
+
+#proyecto {
+    background-color: #dddddd;
+}
+
+
+/* General Grid */
+
 .juegos,
 .ligas,
 .equipos,
 .jugadores,
 .entrenadores {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto;
     padding: 20px;
+}
+
+
+/* Juegos */
+
+.juegos h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.imgJuegos {
+    width: 10em;
+    height: 15em;
+}
+
+
+/* Ligas */
+
+.ligas h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.imgLigas {
+    width: 8em;
+    height: 9em;
+}
+
+
+/* Equipos */
+
+.plantillaEquipo {
+    padding-bottom: 2em;
+}
+
+.equipos h2 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.imgEquipos {
+    width: 8em;
+    height: 9em;
+}
+
+
+/* Jugadores */
+
+.jugadores {
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.jugadores h2 {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.fichaJugador {
+    border: 2px solid #ccc;
+}
+
+.imgjugadores {
+    height: 9em;
+    width: 10em;
+}
+
+.jugadores p {
+    font-family: 'Courier Prime', monospace;
+    font-size: 2em;
+}
+
+
+/* Entrenadores */
+
+.entrenadores {
+    margin: 1rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.fichaEntrenador {
+    grid-column: 3;
+    border: 2px solid #ccc;
+}
+
+.entrenadores h2 {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.imgEntrenador {
+    height: 9em;
+    width: 10em;
 }
