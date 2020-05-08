@@ -34,6 +34,9 @@ var Fantasy = new Vue({
             this.equipos = null;
             this.jugadores = null;
             this.entrenadores = null;
+
+            $inGame = 1;
+            console.log($inGame);
             axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Ligas?filter=Juego,eq,' + ID)
                 .then(response => {
                     this.ligas = response.data.records,

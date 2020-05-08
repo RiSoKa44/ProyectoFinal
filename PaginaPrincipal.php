@@ -3,104 +3,18 @@ include 'header.php';
 ?>
 
 <!-- BODY -->
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img class="imgLogo" src="IMG/Header/logo-web.png" alt="logo_esports_madness" height="200em">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                  <span class="sr-only">(current)</span>
-                </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<!-- Navigation -->
 
+<?php
+include 'navBar.php';
+?>
 <!-- Body -->
 
-<body>
+<?php
+    include 'juegosYLigas.php';
+    include 'selecion.php';
+?>
 
-    <ul id="proyecto">
 
-        <!--Juegos-->
-        <div class="juegos">
-            <div v-for='juego in juegos'>
-                <h2>{{juego.Nombre}}</h2>
-                <img class="imgJuegos pointer" v-bind:src="'./IMG/Juegos/' + juego.Imagen" @click="getLigas(juego.ID)" />
-                <p>{{juego.Plataforma}}</p>
-            </div>
-        </div>
-        <!--Juegos-->
-
-        <br>
-
-        <!--Ligas-->
-        <div v-if="ligas">
-            <div class="ligas">
-                <div v-for='liga in ligas'>
-                    <h2>{{liga.Nombre}}</h2>
-                    <img class="imgLigas pointer" v-bind:src="'./IMG/Ligas/' + liga.Imagen" @click="getEquipos(liga.ID)" />
-                </div>
-            </div>
-            <br>
-        </div>
-        <!--Ligas-->
-
-        <!--Equipos-->
-        <div v-if="equipos">
-            <div class="equipos">
-                <div class="plantillaEquipo" v-for='equipo in equipos'>
-                    <h2>{{equipo.Nombre}}</h2>
-                    <img class="imgEquipos pointer" v-bind:src="'./IMG/Equipos/' + equipo.Logo" width="100" height="100" @click="getJugadores(equipo.ID) , getEntrenadores(equipo.ID)" />
-                </div>
-            </div>
-            <br>
-        </div>
-        <!--Ligas-->
-
-        <!--Jugadores-->
-        <div v-if="jugadores">
-            <div class="jugadores">
-                <div class="fichaJugador" v-for='jugador in jugadores'>
-                    <h2>{{jugador.Nombre}}</h2>
-                    <img class="imgjugadores pointer" v-bind:src="'./IMG/JugadoresYEntrenadores/' + jugador.Imagen" width="100" height="100" />
-                    <p>{{jugador.Rol}}</p>
-                </div>
-            </div>
-            <br>
-        </div>
-        <!--Jugadores-->
-
-        <!--Entrenador-->
-        <div v-if="entrenadores">
-            <div class="entrenadores">
-                <div class="fichaEntrenador" v-for='entrenador in entrenadores'>
-                    <h2>{{entrenador.Nombre}}</h2>
-                    <img class="imgEntrenador pointer" v-bind:src="'./IMG/JugadoresYEntrenadores/' + entrenador.Imagen" width="100" height="100" />
-                </div>
-            </div>
-        </div>
-        <!--Entrenador-->
-
-    </ul>
 </body>
 
 <!--BODY-->
