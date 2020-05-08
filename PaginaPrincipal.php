@@ -44,7 +44,7 @@ include 'header.php';
         <div class="juegos">
             <div v-for='juego in juegos'>
                 <h2>{{juego.Nombre}}</h2>
-                <img class="imgJuegos" v-bind:src="'./IMG/Juegos/' + juego.Imagen" @click="getLigas(juego.ID)" />
+                <img class="imgJuegos pointer" v-bind:src="'./IMG/Juegos/' + juego.Imagen" @click="getLigas(juego.ID)" />
                 <p>{{juego.Plataforma}}</p>
             </div>
         </div>
@@ -57,7 +57,7 @@ include 'header.php';
             <div class="ligas">
                 <div v-for='liga in ligas'>
                     <h2>{{liga.Nombre}}</h2>
-                    <img class="imgLigas" v-bind:src="'./IMG/Ligas/' + liga.Imagen" @click="getEquipos(liga.ID)" />
+                    <img class="imgLigas pointer" v-bind:src="'./IMG/Ligas/' + liga.Imagen" @click="getEquipos(liga.ID)" />
                 </div>
             </div>
             <br>
@@ -69,7 +69,7 @@ include 'header.php';
             <div class="equipos">
                 <div class="plantillaEquipo" v-for='equipo in equipos'>
                     <h2>{{equipo.Nombre}}</h2>
-                    <img class="imgEquipos" v-bind:src="'./IMG/Equipos/' + equipo.Logo" width="100" height="100" @click="getJugadores(equipo.ID) , getEntrenadores(equipo.ID)" />
+                    <img class="imgEquipos pointer" v-bind:src="'./IMG/Equipos/' + equipo.Logo" width="100" height="100" @click="getJugadores(equipo.ID) , getEntrenadores(equipo.ID)" />
                 </div>
             </div>
             <br>
@@ -81,7 +81,7 @@ include 'header.php';
             <div class="jugadores">
                 <div class="fichaJugador" v-for='jugador in jugadores'>
                     <h2>{{jugador.Nombre}}</h2>
-                    <img class="imgjugadores" v-bind:src="'./IMG/JugadoresYEntrenadores/' + jugador.Imagen" width="100" height="100" />
+                    <img class="imgjugadores pointer" v-bind:src="'./IMG/JugadoresYEntrenadores/' + jugador.Imagen" width="100" height="100" />
                     <p>{{jugador.Rol}}</p>
                 </div>
             </div>
@@ -94,7 +94,7 @@ include 'header.php';
             <div class="entrenadores">
                 <div class="fichaEntrenador" v-for='entrenador in entrenadores'>
                     <h2>{{entrenador.Nombre}}</h2>
-                    <img class="imgEntrenador" v-bind:src="'./IMG/JugadoresYEntrenadores/' + entrenador.Imagen" width="100" height="100" />
+                    <img class="imgEntrenador pointer" v-bind:src="'./IMG/JugadoresYEntrenadores/' + entrenador.Imagen" width="100" height="100" />
                 </div>
             </div>
         </div>
