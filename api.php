@@ -11197,10 +11197,10 @@ namespace Tqdev\PhpCrudApi {
 
     $config = new Config([
         // 'driver' => 'mysql',
-        'address' => 'bbdd.electronica-garcilaso.cat',
-        'username' => 'ddb148915',
-        'password' => '/^cns1B/TfDP',
-        'database' => 'ddb148915',
+        //'address' => 'url',
+        //'username' => 'username_sql',
+        //'password' => 'password_BD',
+        //'database' => 'nom_database',
         // d'debug' => false
     ]);
     $request = RequestFactory::fromGlobals();
