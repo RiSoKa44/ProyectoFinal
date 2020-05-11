@@ -74,6 +74,7 @@ var Fantasy = new Vue({
                 .then(response => {
                     console.log("Manel Gordo");
                     this.todos = response.data
+                    console.log(this.todos);
                 })
                 .catch(error => console.error(error))
         },

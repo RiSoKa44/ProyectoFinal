@@ -1,5 +1,5 @@
 <?php
-$servername = "http://esports-madness.electronica-garcilaso.cat/";
+$servername = "bbdd.electronica-garcilaso.cat";
 $database = "ddb148915";
 $username = "ddb148915";
 $password = "/^cns1B/TfDP";
