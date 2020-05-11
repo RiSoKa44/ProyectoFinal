@@ -13,6 +13,7 @@ var Fantasy = new Vue({
 
     methods: {
         getJuegos: function() {
+            document.getElementById("selecionJugadores").style.display = "none"
             axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Juegos')
                 .then(response => {
                     this.juegos = response.data.records,
@@ -25,6 +26,7 @@ var Fantasy = new Vue({
             this.entrenadores = null;
             document.getElementById("juegos").style.display = "none";
             document.getElementById("ligas").style.display = "none";
+            document.getElementById("selecionJugadores").style.display = "grid"
             axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Equipos?filter=ID_Liga,eq,' + ID)
                 .then(response => {
                     this.equipos = response.data.records,
@@ -58,6 +60,22 @@ var Fantasy = new Vue({
                         console.table(response.data);
                 })
                 .catch(error => console.error(error));
+        },
+        selectJugador: function(jugador) {
+            var jugadorID = jugador.ID;
+            var jugadorRol = jugador.Rol;
+            var jugadorImg = jugador.Imagen;
+            document.getElementById(jugadorRol).src = "./IMG/JugadoresYEntrenadores/" + jugadorImg;
+            this.insertBBDD(jugador);
+        },
+        insertBBDD: function(jugador) {
+            console.log("hola");
+            axios.get('./insertIntoUserSelection.php')
+                .then(response => {
+                    console.log("Manel Gordo");
+                    this.todos = response.data
+                })
+                .catch(error => console.error(error))
         },
     }
 })

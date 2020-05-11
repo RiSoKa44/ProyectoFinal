@@ -17,6 +17,12 @@
     padding: 20px;
 }
 
+#selecionJugadores {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    padding: 20px;
+}
+
 .pointer {
     cursor: pointer;
 }
@@ -48,6 +54,19 @@
 .imgLigas {
     width: 8em;
     height: 9em;
+}
+
+
+/* Seleccion */
+
+.imgSeleccion {
+    width: 10em;
+    height: 14em;
+}
+
+.seleccion_señal {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 
