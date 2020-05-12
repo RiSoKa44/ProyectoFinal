@@ -6,6 +6,7 @@ var Fantasy = new Vue({
         ligas: null,
         jugadores: null,
         entrenadores: null,
+        jugadorSeleccionadoTop: null,
     },
     created: function() {
         this.getJuegos();
@@ -61,12 +62,40 @@ var Fantasy = new Vue({
                 })
                 .catch(error => console.error(error));
         },
+        guardarSeleccion: function() {
+            var top = document.getElementById("Top").getAttribute("src");
+            var jung = document.getElementById("Jungla").getAttribute("src");
+            var mid = document.getElementById("Mid").getAttribute("src");
+            var adc = document.getElementById("Adc").getAttribute("src");
+            var supp = document.getElementById("Supp").getAttribute("src");
+
+
+            var someData = [
+                { superior: top, junglero: jung, medio: mid, carry: adc, soporte: supp },
+            ];
+
+            this.finalSelectionJugadores(someData)
+
+        },
         selectJugador: function(jugador) {
             var jugadorID = jugador.ID;
             var jugadorRol = jugador.Rol;
             var jugadorImg = jugador.Imagen;
             document.getElementById(jugadorRol).src = "./IMG/JugadoresYEntrenadores/" + jugadorImg;
-            this.insertBBDD(jugador);
+        },
+        finalSelectionJugadores: function(jugadores) {
+            /*Hacemos el substring para quitarle el relleno a la imgaen
+             * la compararemos para conseguir de vuelta el objeto jugador
+             * con todos los datos que pueden ser necesarios de la BBDD
+             * para su posterior inserción en la tabla de eleccion del jugador
+             *  */
+            console.log(jugadores[0].superior.substring(29, 100));
+            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Jugador?filter=Imagen,eq,' + jugadores[0].superior.substring(29, 100))
+                .then(response => {
+                    this.jugadorSeleccionadoTop = response.data.records,
+                        console.table(response.data.records);
+                })
+                .catch(error => console.error(error));
         },
         insertBBDD: function(jugador) {
             axios.post('./insertIntoUserSelection.php', jugador)

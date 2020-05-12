@@ -14,6 +14,11 @@
     <div><img id="Supp" class="imgSeleccion pointer" src="./IMG/Seleccion/seleccion_jugadores.png" width="200" height="200" />
         <p class="seleccion_señal">SUPP</p>
     </div>
+    <button id="seleccionFinal" class="sendJugadores" @click="guardarSeleccion()">Guardar Selección</button> 
+</div>
+
+<div>
+
 </div>
 <!--Equipos-->
 <div v-if="equipos">
