@@ -1,4 +1,5 @@
 <?php
+
 $servername = "bbdd.electronica-garcilaso.cat";
 $database = "ddb148915";
 $username = "ddb148915";
@@ -11,16 +12,22 @@ if (!$conn) {
 }
 echo "Connected Succesfully";
 
-$sql = "INSERT ID, Nombre, Rol FROM Jugador";
-$result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    echo "id: " . $row["ID"]. " - Name: " . $row["Nombre"]. " " . $row["Rol"]. "<br>";
-  }
+$data=json_decode(file_get_contents('php://input'),1);
+print_r($data);
+print_r($data["ID"]);
+
+$jugadorID = $_GET['jugador'];
+
+echo $jugadorID;
+
+$sql = "INSERT INTO SeleccionJugador (Usuario, IDJugador)
+VALUES ('1', '$jugadorID')";
+
+if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully";
 } else {
-  echo "0 results";
+  echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
 mysqli_close($conn);

@@ -69,10 +69,8 @@ var Fantasy = new Vue({
             this.insertBBDD(jugador);
         },
         insertBBDD: function(jugador) {
-            console.log("hola");
-            axios.get('./insertIntoUserSelection.php')
+            axios.post('./insertIntoUserSelection.php', jugador)
                 .then(response => {
-                    console.log("Manel Gordo");
                     this.todos = response.data
                     console.log(this.todos);
                 })
