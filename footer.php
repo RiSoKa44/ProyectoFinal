@@ -1,5 +1,4 @@
-
-
+<!-- FOOTER -->
 <footer class="site-footer">
     <div class="container">
         <div class="row">
@@ -7,7 +6,7 @@
                 <h6>About</h6>
                 <p class="text-justify"> Bienvenido a <i>E-Sport Madness</i> el lugar perfecto para los amantes de los E-Sports. <br><br> ¿Quieres competir con tus amigos y saber quien conoce mejor las competiciones? <br><br> No busques más, E-sport Madness es tu lugar.</p>
             </div>
-
+            <!--OTROS ENLACES A OTRAS WEBS-->
             <div class="col-xs-6 col-md-3">
                 <h6>E-Sports</h6>
                 <ul class="footer-links">
@@ -17,7 +16,7 @@
                     <li><a href="https://lvp.global/">LVP</a></li>
                 </ul>
             </div>
-
+            <!--OTROS ENLACES A OTRAS WEBS-->
             <div class="col-xs-6 col-md-3">
                 <h6>Quick Links</h6>
                 <ul class="footer-links">
@@ -31,13 +30,15 @@
         <hr>
     </div>
     <div class="container">
+        <!-- COPYRIGHT -->
         <div class="row">
             <div class="col-md-8 col-sm-6 col-xs-12">
                 <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
                     <a href="#">Javier&Oscar InsPedralbes</a>.
                 </p>
             </div>
-
+            <!-- COPYRIGHT -->
+            <!-- ICONOS REDES SOCIALES -->
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <ul class="social-icons">
                     <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
@@ -46,9 +47,11 @@
                     <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
             </div>
+            <!-- ICONOS REDES SOCIALES -->
         </div>
     </div>
 </footer>
+<!-- FOOTER -->
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="JS/funcions.js"></script>

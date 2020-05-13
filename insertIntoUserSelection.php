@@ -1,5 +1,6 @@
 <?php
 
+/* Conexión a BBDD */
 $servername = "bbdd.electronica-garcilaso.cat";
 $database = "ddb148915";
 $username = "ddb148915";
@@ -12,6 +13,10 @@ if (!$conn) {
 }
 echo "Connected Succesfully";
 
+/* Método para obtener el data enviado 
+* en el POST en formato json y transformarlo 
+* en algo que se puede manipular 
+*/
 $data=json_decode(file_get_contents('php://input'),1);
 print_r($data);
 print_r($data["ID"]);
@@ -20,6 +25,10 @@ $jugadorID = $_GET['jugador'];
 
 echo $jugadorID;
 
+
+/* QUERYS */
+
+/* Insert */
 $sql = "INSERT INTO SeleccionJugador (Usuario, IDJugador)
 VALUES ('1', '" . $data["ID"] . "')";
 

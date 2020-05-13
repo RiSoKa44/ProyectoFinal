@@ -13,6 +13,9 @@ var Fantasy = new Vue({
     },
 
     methods: {
+        /*Api: 
+         * metodo para obtención de Juegos 
+         */
         getJuegos: function() {
             document.getElementById("selecionJugadores").style.display = "none"
             axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Juegos')
@@ -22,6 +25,9 @@ var Fantasy = new Vue({
                 })
                 .catch(error => console.error(error));
         },
+        /*Api: 
+         * metodo para obtención de Equipos 
+         */
         getEquipos: function(ID) {
             this.jugadores = null;
             this.entrenadores = null;
@@ -35,6 +41,9 @@ var Fantasy = new Vue({
                 })
                 .catch(error => console.error(error));
         },
+        /*Api: 
+         * metodo para obtención de Ligas 
+         */
         getLigas: function(ID) {
             this.equipos = null;
             this.jugadores = null;
@@ -46,6 +55,9 @@ var Fantasy = new Vue({
                 })
                 .catch(error => console.error(error));
         },
+        /*Api: 
+         * metodo para obtención de Jugadores 
+         */
         getJugadores: function(ID) {
             axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Jugador?filter=Equipo,eq,' + ID)
                 .then(response => {
@@ -54,6 +66,9 @@ var Fantasy = new Vue({
                 })
                 .catch(error => console.error(error));
         },
+        /*Api: 
+         * metodo para obtención de Entrenadores 
+         */
         getEntrenadores: function(ID) {
             axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Entrenadores?filter=Equipo,eq,' + ID)
                 .then(response => {
@@ -62,6 +77,10 @@ var Fantasy = new Vue({
                 })
                 .catch(error => console.error(error));
         },
+        /*Guardar la selección hecha por 
+         * el jugador al hacer click en el boton 
+         * guardar seleccion
+         * */
         guardarSeleccion: function() {
             var top = document.getElementById("Top").getAttribute("src");
             var jung = document.getElementById("Jungla").getAttribute("src");
@@ -77,6 +96,10 @@ var Fantasy = new Vue({
             this.finalSelectionJugadores(someData)
 
         },
+        /* Cambia la imagen
+         * de los jugadores seleccionados
+         * por el usuario 
+         */
         selectJugador: function(jugador) {
             var jugadorID = jugador.ID;
             var jugadorRol = jugador.Rol;
@@ -97,6 +120,10 @@ var Fantasy = new Vue({
                 })
                 .catch(error => console.error(error));
         },
+        /* Envia al servidor los
+         * datos elegidos por el jugador para
+         * hacer print en la BBDD
+         */
         insertBBDD: function(jugador) {
             axios.post('./insertIntoUserSelection.php', jugador)
                 .then(response => {
