@@ -77,7 +77,7 @@ var Fantasy = new Vue({
                 })
                 .catch(error => console.error(error));
         },
-        /*Guardar la selección hecha por 
+        /* Guardar la selección hecha por 
          * el jugador al hacer click en el boton 
          * guardar seleccion
          * */
@@ -107,18 +107,21 @@ var Fantasy = new Vue({
             document.getElementById(jugadorRol).src = "./IMG/JugadoresYEntrenadores/" + jugadorImg;
         },
         finalSelectionJugadores: function(jugadores) {
-            /*Hacemos el substring para quitarle el relleno a la imgaen
+            /* Hacemos el substring para quitarle el relleno a la imgaen
              * la compararemos para conseguir de vuelta el objeto jugador
              * con todos los datos que pueden ser necesarios de la BBDD
              * para su posterior inserción en la tabla de eleccion del jugador
-             *  */
+             */
             console.log(jugadores[0].superior.substring(29, 100));
-            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Jugador?filter=Imagen,eq,' + jugadores[0].superior.substring(29, 100))
+            var jugggg = axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Jugador?filter=Imagen,eq,' + jugadores[0].superior.substring(29, 100))
                 .then(response => {
                     this.jugadorSeleccionadoTop = response.data.records,
                         console.table(response.data.records);
                 })
                 .catch(error => console.error(error));
+            jugggg.then(function(result) {
+                console.log('promise returned: ' + result)
+            });
         },
         /* Envia al servidor los
          * datos elegidos por el jugador para

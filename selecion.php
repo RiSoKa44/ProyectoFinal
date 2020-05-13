@@ -14,6 +14,9 @@
     <div><img id="Supp" class="imgSeleccion pointer" src="./IMG/Seleccion/seleccion_jugadores.png" width="200" height="200" />
         <p class="seleccion_señal">SUPP</p>
     </div>
+    <div>
+        <button id="guardarSel" class="btn btn-primary">Guardar Selección</button>
+    </div>
 </div>
 <!--Equipos-->
 <div v-if="equipos">
