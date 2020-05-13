@@ -21,7 +21,7 @@
                     <a class="nav-link" href="#">Crear/Unirse a Sala</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Mi Perfil</a>
+                    <a class="nav-link" href="perfil.php">Mi Perfil</a>
                 </li>
             </ul>
         </div>
