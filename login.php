@@ -5,35 +5,30 @@ include 'header.php';
 <!------ Include the above in your HEAD tag ---------->
 
 
-<div id="frm">
-  <form action="proces.php" method="POST">
-    <p>
-      <label>Nom usuari:<label>
-      <input type="text" id="Nombre" name="Nombre"/>
-    </p>
-    <p>
-      <label>Contrasenya:<label>
-      <input type="password" id="Contraseña" name="Contraseña"/>
-    </p>
-    <p>
-      <input type="submit" id="btn" name="Login"/>
-    </p>
-  </form>
-</div>
 
-<!--
+
+
 <div class="wrapper fadeInDown">
   <div id="formContent">
 
 
- <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
-      
-      <br>
-      <a class="btn btn-primary" href="PaginaPrincipal" role="button">ENTRAR</a>
+    <div id="frm">
+      <form action="logica/logear.php" method="POST">
+        <p>
+          <label>Nom usuari:<label>
+          <input type="text" id="Nombre" name="Nombre"/>
+        </p>
+        <p>
+          <label>Contrasenya:<label>
+          <input type="password" id="Contraseña" name="Contraseña"/>
+        </p>
+        <p>
+          <input type="submit" id="btn" name="Login"/>
+        </p>
+      </form>
+    </div>
 
-      login con gmail
+      <!--login con gmail-->
       <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
       <script>
         function onSignIn(googleUser) {
@@ -54,10 +49,10 @@ include 'header.php';
 
     </form>
 
-    Remind Passowrd
+    <!--Remind Passowrd-->
     <div id="formFooter">
       <a class="underlineHover" href="#">Forgot Password?</a>
     </div>
 
   </div>
-</div>-->
+</div>
