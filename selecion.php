@@ -15,7 +15,7 @@
         <p class="seleccion_señal">SUPP</p>
     </div>
     <div>
-        <button id="guardarSel" class="btn btn-primary">Guardar Selección</button>
+        <button id="guardarSel" class="btn btn-primary" onclick="guardarSeleccion()">Guardar Selección</button>
     </div>
 </div>
 <!--Equipos-->
