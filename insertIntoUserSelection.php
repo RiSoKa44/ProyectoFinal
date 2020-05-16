@@ -1,6 +1,6 @@
 <?php
 
-/* Conexión a BBDD */
+/* Conexión a BBDD 
 $servername = "bbdd.electronica-garcilaso.cat";
 $database = "ddb148915";
 $username = "ddb148915";
@@ -11,7 +11,7 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-echo "Connected Succesfully";
+echo "Connected Succesfully";*/
 
 /* Método para obtener el data enviado 
 * en el POST en formato json y transformarlo 
@@ -19,18 +19,29 @@ echo "Connected Succesfully";
 */
 $data=json_decode(file_get_contents('php://input'),1);
 print_r($data);
-print_r($data["ID"]);
 
-$jugadorID = $_GET['jugador'];
+foreach ($data as $key => $value) {
+  $top = $value["superior"];
+  $jung = $value["junglero"];
+  $mid = $value["medio"];
+  $adc = $value["carry"];
+  $supp = $value["soporte"];
+}
 
-echo $jugadorID;
+print_r($top);
+print_r($jung);
+print_r($mid);
+print_r($adc);
+print_r($supp);
+
+
 
 
 /* QUERYS */
 
-/* Insert */
-$sql = "INSERT INTO SeleccionJugador (Usuario, IDJugador)
-VALUES ('1', '" . $data["ID"] . "')";
+/* Insert 
+$sql = "INSERT INTO SeleccionJugador (Usuario, IDTOP, IDJUNGLA, IDMID, IDADC, IDSUPP)
+VALUES ('3', '" . $top . "', '" . $jung . "', '" . $mid . "', '" . $adc . "', '" . $supp . "')";
 
 if ($conn->query($sql) === TRUE) {
   echo "New record created successfully";
@@ -39,5 +50,5 @@ if ($conn->query($sql) === TRUE) {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-mysqli_close($conn);
+mysqli_close($conn);*/
 ?>
