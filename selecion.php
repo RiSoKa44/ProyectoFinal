@@ -18,6 +18,24 @@
         <button id="guardarSel" class="btn btn-primary" onclick="guardarSeleccion()">Guardar Selección</button>
     </div>
 </div>
+
+<div id="filtros">
+<div>
+    <div class="dropdown">
+    <label for="rol"></label>
+        <select id="rol"  class="btn btn-primary dropdown-toggle" @change="getFiltrado()">
+        <option value="none" selected disabled hidden> 
+          Filtro Por Linea/Rol
+      </option> 
+            <option value="Top">TOP</option>
+            <option value="Jungla">JUNGLA</option>
+            <option value="Mid">MEDIO</option>
+            <option value="Adc">ADC</option>
+            <option value="Supp">SUPP</option>
+        </select>
+    </div>
+</div>
+</div>
 <!--Equipos-->
 <div v-if="equipos">
     <div class="equipos">
@@ -53,5 +71,16 @@
     </div>
 </div>
 <!--Entrenador-->
+
+<!--ByRol-->
+<div v-if="ByRol">
+    <div class="ByRol">
+        <div class="fichaByRol" v-for='jByRol in ByRol'>
+            <h2>{{jByRol.Nombre}}</h2>
+            <img class="imgjByRol pointer" v-bind:src="'./IMG/JugadoresYEntrenadores/' + jByRol.Imagen" width="100" height="100" />
+        </div>
+    </div>
+</div>
+<!--ByRol-->
 
 </ul>

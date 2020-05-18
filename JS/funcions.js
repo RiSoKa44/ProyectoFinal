@@ -7,6 +7,7 @@ var Fantasy = new Vue({
         jugadores: null,
         entrenadores: null,
         jugadorSeleccionadoTop: null,
+        ByRol: null,
     },
     created: function() {
         this.getJuegos();
@@ -17,7 +18,8 @@ var Fantasy = new Vue({
          * metodo para obtención de Juegos 
          */
         getJuegos: function() {
-            document.getElementById("selecionJugadores").style.display = "none"
+            document.getElementById("selecionJugadores").style.display = "none";
+            document.getElementById("filtros").style.display = "none";
             axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Juegos')
                 .then(response => {
                     this.juegos = response.data.records,
@@ -34,6 +36,7 @@ var Fantasy = new Vue({
             document.getElementById("juegos").style.display = "none";
             document.getElementById("ligas").style.display = "none";
             document.getElementById("selecionJugadores").style.display = "grid"
+            document.getElementById("filtros").style.display = "grid";
             axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Equipos?filter=ID_Liga,eq,' + ID)
                 .then(response => {
                     this.equipos = response.data.records,
@@ -73,6 +76,19 @@ var Fantasy = new Vue({
             axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Entrenadores?filter=Equipo,eq,' + ID)
                 .then(response => {
                     this.entrenadores = response.data.records,
+                        console.table(response.data);
+                })
+                .catch(error => console.error(error));
+        },
+
+        getFiltrado: function() {
+            var select = document.getElementById("rol");
+            var opt = select.options[select.selectedIndex];
+            var rolSelected = opt.value;
+            console.log(rolSelected);
+            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Jugador?filter=Rol,eq,' + rolSelected)
+                .then(response => {
+                    this.ByRol = response.data.records,
                         console.table(response.data);
                 })
                 .catch(error => console.error(error));

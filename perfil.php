@@ -22,10 +22,10 @@ include 'navBar.php';
                 <h2>Cumpleaños {{pUs.Fecha_Cumpleanos}}
             </div>
             <button id="mostrarSelect"><a class="nav-link" @click="getSeleccion()">Ver Mi Selección</a></button>
-
+            
             <div id="selecJugar" class="selecJugar">
                 <div v-for='sJug in selecJugar'>
-                    
+                    {{sJug}}
                 </div>
             </div>
         </div>
