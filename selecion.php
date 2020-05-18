@@ -34,6 +34,7 @@
             <option value="Supp">SUPP</option>
         </select>
     </div>
+    
 </div>
 </div>
 <!--Equipos-->

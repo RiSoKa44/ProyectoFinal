@@ -25,7 +25,7 @@ include 'navBar.php';
             
             <div id="selecJugar" class="selecJugar">
                 <div v-for='sJug in selecJugar'>
-                    {{sJug}}
+                    <h2 idDelTop="sJug.IDTOP" iDelJung="sJug.IDJUNG"></h2>
                 </div>
             </div>
         </div>
