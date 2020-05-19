@@ -29,7 +29,7 @@ include 'navBar.php';
                 <h2 id="idsJugadoresSel" :idDelTop="sJug.IDTOP" :idDelJung="sJug.IDJUNGLA" :idDelMid="sJug.IDMID" :idDelAdc="sJug.IDADC" :idDelSupp="sJug.IDSUPP"></h2>
             </div>
         </div>
-        <div class="fichasSeleccionadosPerfil">
+        <div id="fichasSelec" class="fichasSeleccionadosPerfil">
         <div v-for='Top in jugTop'>
             <h2>{{Top.Nombre}}</h2>
             <img class="imgjugadores pointer" v-bind:src="'./IMG/JugadoresYEntrenadores/' + Top.Imagen" width="100" height="100" @click="selectJugador(jugador)" />

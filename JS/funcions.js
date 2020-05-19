@@ -130,6 +130,17 @@ function guardarSeleccion() {
     this.insertBBDD(someData);
 }
 
+function mostrarEquipos() {
+    console.log(document.getElementById("equipos"));
+    if (document.getElementById("equipos").getAttribute("enmuestra") == "si") {
+        document.getElementById("equipos").style.display = "none";
+        document.getElementById("equipos").setAttribute("enmuestra", "no");
+    } else {
+        document.getElementById("equipos").style.display = "grid";
+        document.getElementById("equipos").setAttribute("enmuestra", "si");
+    }
+}
+
 function insertBBDD(jugadores) {
     axios.post('./insertIntoUserSelection.php', jugadores)
         .then(response => {

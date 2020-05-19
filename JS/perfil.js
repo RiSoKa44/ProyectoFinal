@@ -35,6 +35,8 @@ var Perfil = new Vue({
         },
         getJugadoresSelecteds: function() {
             var idsJugsSel = document.getElementById("idsJugadoresSel");
+            var nuevaSel = document.getElementById("fichasSelec");
+            nuevaSel.setAttribute("onclick", "ocultarSelect()");
             console.log(idsJugsSel);
 
             var top = idsJugsSel.getAttribute("idDelTop");
@@ -80,6 +82,3 @@ var Perfil = new Vue({
         },
     }
 });
-
-
-function ocultarSelect() {}

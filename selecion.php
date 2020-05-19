@@ -14,12 +14,14 @@
     <div><img id="Supp" class="imgSeleccion pointer" src="./IMG/Seleccion/seleccion_jugadores.png" width="200" height="200" />
         <p class="seleccion_señal">SUPP</p>
     </div>
-    <div>
-        <button id="guardarSel" class="btn btn-primary" onclick="guardarSeleccion()">Guardar Selección</button>
-    </div>
+    
 </div>
 
 <div id="filtros">
+<div id="botonesSeleccion">
+        <button id="guardarSel" class="btn btn-primary" onclick="guardarSeleccion()">Guardar Selección</button>
+        <button id="guardarSel" class="btn btn-primary" onclick="guardarSeleccion()">Borrar Selección</button>
+    </div>
 <div>
     <div class="dropdown">
     <label for="rol"></label>
@@ -33,13 +35,15 @@
             <option value="Adc">ADC</option>
             <option value="Supp">SUPP</option>
         </select>
+        <button id="guardarSel" class="btn btn-primary" onclick="mostrarEquipos()">Ocultar Equipos</button>
     </div>
     
 </div>
+
 </div>
 <!--Equipos-->
 <div v-if="equipos">
-    <div class="equipos">
+    <div id="equipos" class="equipos">
         <div class="plantillaEquipo" v-for='equipo in equipos'>
             <h2>{{equipo.Nombre}}</h2>
             <img class="imgEquipos pointer" v-bind:src="'./IMG/Equipos/' + equipo.Logo" width="100" height="100" @click="getJugadores(equipo.ID) , getEntrenadores(equipo.ID)" />
@@ -78,7 +82,7 @@
     <div class="ByRol">
         <div class="fichaByRol" v-for='jByRol in ByRol'>
             <h2>{{jByRol.Nombre}}</h2>
-            <img class="imgjByRol pointer" v-bind:src="'./IMG/JugadoresYEntrenadores/' + jByRol.Imagen" width="100" height="100" />
+            <img class="imgjByRol pointer" v-bind:src="'./IMG/JugadoresYEntrenadores/' + jByRol.Imagen" width="100" height="100" @click="selectJugador(jByRol)"/>
         </div>
     </div>
 </div>
