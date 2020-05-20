@@ -1,6 +1,6 @@
 /* Body Colors */
 
-#proyecto {
+.proyecto {
     background-color: #dddddd;
 }
 
@@ -109,6 +109,8 @@
 .imgjugadores {
     height: 9em;
     width: 10em;
+    display: block;
+    margin: auto;
 }
 
 .jugadores p {

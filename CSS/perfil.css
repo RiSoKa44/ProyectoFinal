@@ -1,6 +1,67 @@
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1250px;
+    }
+}
+
+.perfilUsuario {
+    border-bottom: 1em;
+}
+
+#perfilSuperior {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    border: 1em solid;
+    margin: 2em;
+}
+
+#avatar {
+    grid-row-start: 1;
+    grid-row-end: 6;
+}
+
 .fichasSeleccionadosPerfil {
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    padding: 20px;
+    grid-template-columns: 20% 20% 20% 20% 20%;
     margin-bottom: 2em;
+    padding: 1em;
+}
+
+.perfilSuperior>h1 {
+    margin: 1em;
+    font-size: 3em;
+    text-decoration: underline;
+}
+
+.perfilSuperior>h2 {
+    margin: 2em;
+}
+
+.perfilSuperior>img {
+    height: 15em;
+    width: 20em;
+    margin: 0.5em;
+}
+
+.losJugadores {
+    margin: 2px;
+}
+
+.losJugadores {
+    text-align: left;
+}
+
+.losJugadores>h2 {
+    margin: 0em;
+    text-decoration: underline;
+}
+
+.losJugadores>p {
+    font-size: 2em;
+    text-align: center;
+    border: 2px solid;
+}
+
+.nav-link {
+    float: right;
 }

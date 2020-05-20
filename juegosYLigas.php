@@ -1,6 +1,6 @@
 <body>
 
-    <ul id="proyecto">
+    <ul id="proyecto" class="proyecto">
 
         <!--Juegos-->
         <div id="juegos" class="juegos">
