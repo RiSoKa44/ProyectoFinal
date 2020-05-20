@@ -2,25 +2,17 @@
 require 'conexion.php';
 session_start();
 
-
 $Nombre= $_POST['Nombre'];
-$Contrasena= $_POST['Contraseña'];
+$Contraseña= $_POST['Contraseña'];
 
-$query = "SELECT * FROM Usuario WHERE Nombre='" . $Nombre. "' AND Contrasena='" .$Contrasena. "'";
-
-$result = mysqli_query($conn, $query);
-$numRows = mysqli_num_rows($result);
-
-print_r($numRows);
-
+$query = "SELECT COUNT(*) as contar from usuario where Nombre='$Nombre' and Contraseña='$Contraseña'";
+$result = mysqli_query($conexion, $query);
 $array= mysqli_fetch_array($result);
 
-if ($numRows>0){
+if ($array['contar']>0){
     $_SESSION['Nombre']=$Nombre;
     header("Location: ../PaginaPrincipal.php");
 }else{
-    echo $query;
-
     echo "datos incorrectos";
 }
 

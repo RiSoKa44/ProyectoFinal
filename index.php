@@ -6,10 +6,10 @@ include 'header.php';
 
 <div class="wrapper fadeInDown">
   <div id="formContent">
-
-
     <div id="frm">
-      <form action="logica/logear.php" method="POST">
+
+    
+      <form action="PaginaPrincipal.php" method="POST">
         <p>
           <label>Nom usuari:<label>
           <input type="text" id="Nombre" name="Nombre"/>
@@ -23,6 +23,12 @@ include 'header.php';
         </p>
       </form>
     </div>
+
+
+      <form action="registro.php" method="POST">
+        <input type="submit" value="Registro" name="registro"/>
+      </form>
+
 
       <!--login con gmail-->
       <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
