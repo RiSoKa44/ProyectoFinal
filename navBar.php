@@ -18,7 +18,7 @@
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Crear/Unirse a Sala</a>
+                    <a class="nav-link" href="salas.php">Crear/Unirse a Sala</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="perfil.php">Mi Perfil</a>
