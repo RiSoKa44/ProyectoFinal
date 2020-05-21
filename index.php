@@ -1,60 +1,45 @@
 <?php
-include 'header.php';
-?>    
+  session_start();
 
-<!------ Include the above in your HEAD tag ---------->
+  require 'database.php';
 
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <div id="frm">
+  if (isset($_SESSION['user_id'])) {
+    $records = $conn->prepare('SELECT id, email, password FROM usuario WHERE id = :id');
+    $records->bindParam(':id', $_SESSION['user_id']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
 
-    
-      <form action="PaginaPrincipal.php" method="POST">
-        <p>
-          <label>Nom usuari:<label>
-          <input type="text" id="Nombre" name="Nombre"/>
-        </p>
-        <p>
-          <label>Contrasenya:<label>
-          <input type="password" id="Contraseña" name="Contraseña"/>
-        </p>
-        <p>
-          <input type="submit" id="btn" name="Login"/>
-        </p>
-      </form>
-    </div>
+    $user = null;
 
+    if (count($results) > 0) {
+      $user = $results;
+    }
+  }
+?>
 
-      <form action="registro.php" method="POST">
-        <input type="submit" value="Registro" name="registro"/>
-      </form>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to you WebApp</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <?php require 'partials/header.php' ?>
 
+    <?php if(!empty($user)): ?>
+      <a href="PaginaPrincipal.php">
+        Inicio
+      </a>
+      <a href="logout.php">
+        Logout
+      </a>
+    <?php else: ?>
+      <h1>Login o Registre</h1>
 
-      <!--login con gmail-->
-      <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-      <script>
-        function onSignIn(googleUser) {
-          // Useful data for your client-side scripts:
-          var profile = googleUser.getBasicProfile();
-          console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-          console.log('Full Name: ' + profile.getName());
-          console.log('Given Name: ' + profile.getGivenName());
-          console.log('Family Name: ' + profile.getFamilyName());
-          console.log("Image URL: " + profile.getImageUrl());
-          console.log("Email: " + profile.getEmail());
-
-          // The ID token you need to pass to your backend:
-          var id_token = googleUser.getAuthResponse().id_token;
-          console.log("ID Token: " + id_token);
-        }
-      </script>
-
-    </form>
-
-    <!--Remind Passowrd-->
-    <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
-    </div>
-
-  </div>
-</div>
+      <a href="login.php">Login</a> o
+      <a href="signup.php">Registre</a>
+    <?php endif; ?>
+  </body>
+</html>
