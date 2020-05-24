@@ -3,26 +3,33 @@
   session_start();
 
   if (isset($_SESSION['user_id'])) {
-    header('Location: /ProyectoFinal');
+    header('Location: /PaginaPrincipal');
   }
   require 'database.php';
 
+    $email = $_POST['email'];
+
   if (!empty($_POST['email']) && !empty($_POST['password'])) {
-    $records = $conn->prepare('SELECT id, email, password FROM usuario WHERE email = :email');
-    $records->bindParam(':email', $_POST['email']);
-    $records->execute();
-    $results = $records->fetch(PDO::FETCH_ASSOC);
 
-    $message = '';
+     $sql = "SELECT id, email, password 
+     FROM usuario 
+     WHERE email = '" . $email . "'";
 
-    if (count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
-      $_SESSION['user_id'] = $results['id'];
-      header("Location: /ProyectoFinal");
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo "id: " . $row["id"]. " - Name: " . $row["email"]. " " . $row["password"]. "<br>";
+            $_SESSION['user_id'] = $row["id"];
+            
+            header("Location: /PaginaPrincipal");
+        }
     } else {
-      $message = 'Sorry, those credentials do not match';
-    }
-  }
-
+    echo "0 results";
+}
+$conn->close();
+  } 
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +38,7 @@
     <meta charset="utf-8">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="CSS/style.css">
   </head>
   <body>
     <?php require 'partials/header.php' ?>

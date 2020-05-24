@@ -7,6 +7,13 @@ include 'header.php';
 
 <?php
 include 'navBar.php';
+
+session_start();
+print_r($_SESSION['user_id']);
+$misesion = $_SESSION['user_id'];
+print_r($misesion);
+/*DOMDocument::getElementById("perfil");
+DOMDocument::createAttribute($misesion);*/
 ?>
 
 <body class="proyecto" class="bg-light">
@@ -19,7 +26,7 @@ include 'navBar.php';
                 <h2>Nombre: {{pUs.Nombre}} {{pUs.Apellido}}</h2>
                 <h2 v-if="1">Sexo: Hombre</h2>
                 <h2 v-else>Sexo: Mujer</h2>
-                <h2>Cumpleaños: {{pUs.Fecha_Cumpleanos}} </h2>
+                <h2>Fecha de Nacimiento: {{pUs.Fecha_Cumpleanos}} </h2>
             </div>
             <button id="mostrarSelect"><a class="nav-link" @click="getJugadoresSelecteds()">Ver Mi Selección</a></button>
         </div>

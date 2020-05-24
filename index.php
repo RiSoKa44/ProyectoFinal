@@ -4,26 +4,32 @@
   require 'database.php';
 
   if (isset($_SESSION['user_id'])) {
-    $records = $conn->prepare('SELECT id, email, password FROM usuario WHERE id = :id');
-    $records->bindParam(':id', $_SESSION['user_id']);
-    $records->execute();
-    $results = $records->fetch(PDO::FETCH_ASSOC);
 
+$id = $_SESSION['user_id'];
+
+     $sql = "SELECT id, email, password FROM usuario WHERE id = '" . $id . "'";
+
+    $result = $conn->query($sql);
     $user = null;
-
-    if (count($results) > 0) {
-      $user = $results;
-    }
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            $user = $result;
+        }
+    } else {
+    echo "0 results";
+}
   }
+$conn->close();
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Welcome to you WebApp</title>
+    <title>Esport Madness</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="CSS/style.css">
   </head>
   <body>
     <?php require 'partials/header.php' ?>

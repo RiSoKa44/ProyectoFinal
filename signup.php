@@ -1,21 +1,22 @@
 <?php
 
+  
   require 'database.php';
 
   $message = '';
-
+ $email = $_POST['email'];
+ $pass = $_POST['password'];
   if (!empty($_POST['email']) && !empty($_POST['password'])) {
-    $sql = "INSERT INTO usuario (email, password) VALUES (:email, :password)";
+    $sql = "INSERT INTO usuario (email, password) 
+    VALUES ('" . $email . "', '" . $pass . "')";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':email', $_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-    $stmt->bindParam(':password', $password);
-
-    if ($stmt->execute()) {
-      $message = 'Successfully created new user';
-    } else {
-      $message = 'Sorry there must have been an issue creating your account';
-    }
+    
+    if ($conn->query($sql) === TRUE) {
+  echo "New record created successfully";
+  echo $sql;
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
   }
 ?>
 <!DOCTYPE html>
@@ -24,7 +25,7 @@
     <meta charset="utf-8">
     <title>SignUp</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="CSS/style.css">
   </head>
   <body>
 
