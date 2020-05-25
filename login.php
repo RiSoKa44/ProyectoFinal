@@ -3,7 +3,7 @@
   session_start();
 
   if (isset($_SESSION['user_id'])) {
-    header('Location: /PaginaPrincipal');
+    header('Location: /PaginaPrincipal.php');
   }
   require 'database.php';
 
@@ -11,7 +11,7 @@
 
   if (!empty($_POST['email']) && !empty($_POST['password'])) {
 
-     $sql = "SELECT id, email, password 
+     $sql = "SELECT id, email, password
      FROM usuario 
      WHERE email = '" . $email . "'";
 
@@ -23,7 +23,7 @@
             echo "id: " . $row["id"]. " - Name: " . $row["email"]. " " . $row["password"]. "<br>";
             $_SESSION['user_id'] = $row["id"];
             
-            header("Location: /PaginaPrincipal");
+            header("Location: /PaginaPrincipal.php");
         }
     } else {
     echo "0 results";
