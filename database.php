@@ -1,9 +1,9 @@
 <?php
 
-$servername = "bbdd.electronica-garcilaso.cat";
-$database = "ddb148915";
-$username = "ddb148915";
-$password = "/^cns1B/TfDP";
+$servername = "localhost";
+$database = "pfinal";
+$username = "root";
+$password = "";
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 // Check connection

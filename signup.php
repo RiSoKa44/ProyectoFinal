@@ -6,9 +6,11 @@
   $message = '';
  $email = $_POST['email'];
  $pass = $_POST['password'];
-  if (!empty($_POST['email']) && !empty($_POST['password'])) {
-    $sql = "INSERT INTO usuario (email, password) 
-    VALUES ('" . $email . "', '" . $pass . "')";
+ $nick= $_POST['nickname'];
+ $data= $_POST['data_naixement'];
+  if (!empty($_POST['email']) && !empty($_POST['password'])  && !empty($_POST['nickname']) && !empty($_POST['data_naixement'])) {
+    $sql = "INSERT INTO usuario (email, password, nickname, data_naixement) 
+    VALUES ('" . $email . "', '" . $pass . "', '" . $nick . "', '" . $data . "')";
     $stmt = $conn->prepare($sql);
     
     if ($conn->query($sql) === TRUE) {
@@ -40,6 +42,8 @@
 
     <form action="signup.php" method="POST">
       <input name="email" type="text" placeholder="Enter your email">
+      <input name="nickname" type="text" placeholder="Enter your nickname">
+      <input name="data_naixement" type="date" min="1900-01-01" max="2018-12-31">
       <input name="password" type="password" placeholder="Enter your Password">
       <input name="confirm_password" type="password" placeholder="Confirm Password">
       <input type="submit" value="Submit">

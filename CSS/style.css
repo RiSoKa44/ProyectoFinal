@@ -7,7 +7,7 @@ body {
 }
 
 /* Input Forms*/
-input[type="text"], input[type="password"]{
+input[type="text"], input[type="password"], input[type="date"]{
   outline: none;
   padding: 20px;
   display: block;

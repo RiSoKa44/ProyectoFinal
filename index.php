@@ -7,7 +7,7 @@
 
 $id = $_SESSION['user_id'];
 
-     $sql = "SELECT id, email, password FROM usuario WHERE id = '" . $id . "'";
+     $sql = "SELECT id, email, password, nickname, data_naixement FROM usuario WHERE id = '" . $id . "'";
 
     $result = $conn->query($sql);
     $user = null;
