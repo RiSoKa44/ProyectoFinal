@@ -18,7 +18,8 @@ var Perfil = new Vue({
          * metodo para obtención de Juegos 
          */
         getInfoUser: function() {
-            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Usuarios')
+            var mises = document.getElementById("sess").getAttribute("class");
+            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Usuarios?filter=ID,eq,' + mises)
                 .then(response => {
                     this.perfilUsuario = response.data.records,
                         console.table(response.data);
@@ -26,7 +27,8 @@ var Perfil = new Vue({
                 .catch(error => console.error(error));
         },
         getSeleccion: function() {
-            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/SeleccionJugador')
+            var mises = document.getElementById("sess").getAttribute("class");
+            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/SeleccionJugador?filter=Usuario,eq,' + mises)
                 .then(response => {
                     this.selecJugar = response.data.records,
                         console.table(response.data);
@@ -34,6 +36,8 @@ var Perfil = new Vue({
                 .catch(error => console.error(error));
         },
         getJugadoresSelecteds: function() {
+            var mises = document.getElementById("sess").getAttribute("class");
+
             var idsJugsSel = document.getElementById("idsJugadoresSel");
             var nuevaSel = document.getElementById("fichasSelec");
             nuevaSel.setAttribute("onclick", "ocultarSelect()");

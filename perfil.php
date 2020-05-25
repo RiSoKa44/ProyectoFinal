@@ -9,11 +9,8 @@ include 'header.php';
 include 'navBar.php';
 
 session_start();
-print_r($_SESSION['user_id']);
 $misesion = $_SESSION['user_id'];
-print_r($misesion);
-/*DOMDocument::getElementById("perfil");
-DOMDocument::createAttribute($misesion);*/
+print_r("<h1 id='sess' class='". $misesion . "'></h1>");
 ?>
 
 <body class="proyecto" class="bg-light">

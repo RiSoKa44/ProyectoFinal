@@ -1,17 +1,10 @@
 <?php
 
-/* Conexión a BBDD Server*//*
+/* Conexión a BBDD */
 $servername = "bbdd.electronica-garcilaso.cat";
 $database = "ddb148915";
 $username = "ddb148915";
-$password = "/^cns1B/TfDP";*/
-
-/* Conexión a BBDD Local*/
-$servername = "localhost";
-$database = "pfinal";
-$username = "root";
-$password = "";
-
+$password = "/^cns1B/TfDP";
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
 // Check connection
@@ -42,6 +35,8 @@ print_r($adc);
 print_r($supp);
 
 
+
+
 session_start();
 print_r($_SESSION['user_id']);
 $misesion = $_SESSION['user_id'];
@@ -49,22 +44,32 @@ print_r($misesion);
 
 /* QUERYS */
 
-
 $sql = "SELECT usuario FROM SeleccionJugador 
      WHERE usuario = '" . $misesion . "'";
-
+    echo $misesion;
     $result = $conn->query($sql);
+    print_r($result->num_rows);
     if ($result->num_rows > 0) {
+      print_r("Actualizar Registro");
         // output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "id: " . $row["id"]. " - Name: " . $row["email"]. " " . $row["password"]. "<br>";
-            $_SESSION['user_id'] = $row["id"];
+        $sql = "UPDATE SeleccionJugador SET 
+      IDTOP = ".$top.",
+      IDJUNGLA = ".$jung.",
+      IDMID = ".$mid.",
+      IDADC=".$adc.",
+      IDSUPP = ".$supp." WHERE Usuario = ".$misesion."";
+  if ($conn->query($sql) === TRUE) {
+    echo "Actualizado";
+    echo $sql;
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
             
             header("Location: /PaginaPrincipal");
-        }
+        
     } else {
     /* Insert */
-    echo $misesion;
+    print_r("Añadido nuevo registro");
     $sql = "INSERT INTO SeleccionJugador (Usuario, IDTOP, IDJUNGLA, IDMID, IDADC, IDSUPP)
     VALUES ('" . $misesion . "', '" . $top . "', '" . $jung . "', '" . $mid . "', '" . $adc . "', '" . $supp . "')";
 
@@ -77,3 +82,4 @@ $sql = "SELECT usuario FROM SeleccionJugador
 
     mysqli_close($conn);
 }
+?>
