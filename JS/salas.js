@@ -5,7 +5,7 @@ function crearSala() {
         '<div> <h2> Código de sala: </h2>' +
         '<p>' +
         codigoSala +
-        '</p><button>Confirmar creación de Sala</button></div>';
+        '</p><button onclick="ConfirmarSala(codigoSala)">Confirmar creación de Sala</button></div>';
 
 }
 
@@ -14,6 +14,16 @@ function unirseASala() {
     document.getElementById("codigoSala").innerHTML =
         '<div><label>Introduce el código de sala<input type="text" id="Name" name="Name"/></label><button>Unirse</button></div>';
 
+}
+
+function ConfirmarSala(codigo) {
+    alert(codigo);
+    axios.post('./crearSala.php', codigo)
+        .then(response => {
+            this.todos = response.data
+            console.log(this.todos);
+        })
+        .catch(error => console.error(error))
 }
 
 function get_rand_alphanumeric(length) {

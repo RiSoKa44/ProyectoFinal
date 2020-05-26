@@ -11,6 +11,7 @@ var Fantasy = new Vue({
     },
     created: function() {
         this.getJuegos();
+        /*this.prechargePlayer();*/
     },
 
     methods: {
@@ -85,7 +86,6 @@ var Fantasy = new Vue({
             var select = document.getElementById("rol");
             var opt = select.options[select.selectedIndex];
             var rolSelected = opt.value;
-            console.log(rolSelected);
             axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Jugador?filter=Rol,eq,' + rolSelected)
                 .then(response => {
                     this.ByRol = response.data.records,
@@ -131,21 +131,50 @@ function guardarSeleccion() {
 }
 
 function mostrarEquipos() {
-    console.log(document.getElementById("equipos"));
+    document.getElementById("jugadores").style.display = "grid";
+    document.getElementById("entrenador").style.display = "grid";
     if (document.getElementById("equipos").getAttribute("enmuestra") == "si") {
         document.getElementById("equipos").style.display = "none";
         document.getElementById("equipos").setAttribute("enmuestra", "no");
+        document.getElementById("jugadores").style.display = "none";
+        document.getElementById("entrenador").style.display = "none";
     } else {
         document.getElementById("equipos").style.display = "grid";
         document.getElementById("equipos").setAttribute("enmuestra", "si");
     }
 }
 
+function borrarSeleccion() {
+    document.getElementById("Top").src = "./IMG/Seleccion/seleccion_jugadores.png";
+    document.getElementById("Top").setAttribute("Identificador", "");
+
+    document.getElementById("Jungla").src = "./IMG/Seleccion/seleccion_jugadores.png";
+    document.getElementById("Jungla").setAttribute("Identificador", "");
+
+    document.getElementById("Mid").src = "./IMG/Seleccion/seleccion_jugadores.png";
+    document.getElementById("Mid").setAttribute("Identificador", "");
+
+    document.getElementById("Adc").src = "./IMG/Seleccion/seleccion_jugadores.png";
+    document.getElementById("Adc").setAttribute("Identificador", "");
+
+    document.getElementById("Supp").src = "./IMG/Seleccion/seleccion_jugadores.png";
+    document.getElementById("Supp").setAttribute("Identificador", "");
+
+}
+
 function insertBBDD(jugadores) {
-    axios.post('./insertIntoUserSelection.php', jugadores)
-        .then(response => {
-            this.todos = response.data
-            console.log(this.todos);
-        })
-        .catch(error => console.error(error))
+    var mensaje;
+    var opcion = confirm("Se ha guardado tu selección");
+    if (opcion == true) {
+        axios.post('./insertIntoUserSelection.php', jugadores)
+            .then(response => {
+                this.todos = response.data
+                console.log(this.todos);
+            })
+            .catch(error => console.error(error))
+    } else {
+        alert("Se cancela el guardado");
+    }
+
+
 }

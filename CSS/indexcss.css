@@ -14,13 +14,13 @@
 .entrenadores,
 .ByRol {
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: 20% 20% 20% 20% 20%;
     padding: 20px;
 }
 
 #selecionJugadores {
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: 20% 20% 20% 20% 20%;
     padding: 20px;
 }
 
@@ -61,8 +61,8 @@
 /* Seleccion */
 
 .imgSeleccion {
-    width: 10em;
-    height: 14em;
+    width: 11em;
+    height: 12em;
 }
 
 .seleccion_señal {
@@ -98,7 +98,7 @@
 }
 
 .jugadores h2 {
-    font-size: 1.6rem;
+    font-size: 2.6rem;
     font-weight: bold;
 }
 
@@ -107,8 +107,8 @@
 }
 
 .imgjugadores {
-    height: 9em;
-    width: 10em;
+    height: 11em;
+    width: 12em;
     display: block;
     margin: auto;
 }
@@ -140,4 +140,21 @@
 .imgEntrenador {
     height: 9em;
     width: 10em;
+}
+
+.fichaByRol {
+    border: 0.1rem solid black;
+    text-align: center;
+}
+
+.fichaByRol h2 {
+    font-size: 2.6rem;
+    font-weight: bold;
+}
+
+.fichaByRol img {
+    height: 11em;
+    width: 12em;
+    display: block;
+    margin: auto;
 }

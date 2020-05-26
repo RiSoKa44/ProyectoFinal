@@ -59,6 +59,7 @@ $sql = "SELECT usuario FROM SeleccionJugador
       IDADC=".$adc.",
       IDSUPP = ".$supp." WHERE Usuario = ".$misesion."";
   if ($conn->query($sql) === TRUE) {
+    
     echo "Actualizado";
     echo $sql;
   } else {

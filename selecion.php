@@ -20,7 +20,7 @@
 <div id="filtros">
 <div id="botonesSeleccion">
         <button id="guardarSel" class="btn btn-primary" onclick="guardarSeleccion()">Guardar Selección</button>
-        <button id="guardarSel" class="btn btn-primary" onclick="guardarSeleccion()">Borrar Selección</button>
+        <button id="guardarSel" class="btn btn-primary" onclick="borrarSeleccion()">Borrar Selección</button>
     </div>
 <div>
     <div class="dropdown">
@@ -55,7 +55,7 @@
 
 <!--Jugadores-->
 <div v-if="jugadores">
-    <div class="jugadores">
+    <div id="jugadores" class="jugadores" muestra="no">
         <div class="fichaJugador" v-for='jugador in jugadores'>
             <h2>{{jugador.Nombre}}</h2>
             <img class="imgjugadores pointer" v-bind:src="'./IMG/JugadoresYEntrenadores/' + jugador.Imagen" width="100" height="100" @click="selectJugador(jugador)" />
@@ -68,7 +68,7 @@
 
 <!--Entrenador-->
 <div v-if="entrenadores">
-    <div class="entrenadores">
+    <div id="entrenador" class="entrenadores">
         <div class="fichaEntrenador" v-for='entrenador in entrenadores'>
             <h2>{{entrenador.Nombre}}</h2>
             <img class="imgEntrenador pointer" v-bind:src="'./IMG/JugadoresYEntrenadores/' + entrenador.Imagen" width="100" height="100" />
