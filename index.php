@@ -5,9 +5,9 @@
 
   if (isset($_SESSION['user_id'])) {
 
-$id = $_SESSION['user_id'];
+    $id = $_SESSION['user_id'];
 
-     $sql = "SELECT id, email, password, nickname, data_naixement FROM usuario WHERE id = '" . $id . "'";
+    $sql = "SELECT id, email, password, nickname, data_naixement FROM usuario WHERE id = '" . $id . "'";
 
     $result = $conn->query($sql);
     $user = null;
@@ -18,8 +18,8 @@ $id = $_SESSION['user_id'];
         }
     } else {
     echo "0 results";
-}
   }
+}
 $conn->close();
 ?>
 

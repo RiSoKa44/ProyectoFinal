@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
 <?php
 include 'header.php';
@@ -11,6 +7,10 @@ include 'header.php';
 
 <?php
 include 'navBar.php';
+
+session_start();
+$misesion = $_SESSION['user_id'];
+print_r("<h1 id='sess' class='". $misesion . "'></h1>");
 ?>
 
 <body class="proyecto">
