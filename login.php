@@ -1,5 +1,4 @@
 <?php
-
   session_start();
 
   if (isset($_SESSION['user_id'])) {
@@ -8,12 +7,11 @@
   require 'database.php';
 
     $email = $_POST['email'];
+    $password = $_POST['password'];
 
   if (!empty($_POST['email']) && !empty($_POST['password'])) {
 
-     $sql = "SELECT id, email, password
-     FROM usuario 
-     WHERE email = '" . $email . "'";
+     $sql = "SELECT id, email, password FROM usuario WHERE email = '" . $email . "' and password='" .$password . "' ";
 
     $result = $conn->query($sql);
 
@@ -26,11 +24,12 @@
             header("Location: /PaginaPrincipal.php");
         }
     } else {
-    echo "0 results";
+    echo "Contraseña o e-mail incorrecte";
 }
 $conn->close();
-  } 
+} 
 ?>
+
 
 <!DOCTYPE html>
 <html>

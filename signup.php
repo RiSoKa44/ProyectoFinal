@@ -1,26 +1,26 @@
 <?php
+require 'database.php';
 
-  
-  require 'database.php';
-
-  $message = '';
- $email = $_POST['email'];
- $pass = $_POST['password'];
- $nick= $_POST['nickname'];
- $data= $_POST['data_naixement'];
+$message = '';
+$email = $_POST['email'];
+$pass = $_POST['password'];
+$nick= $_POST['nickname'];
+$data= $_POST['data_naixement'];
   if (!empty($_POST['email']) && !empty($_POST['password'])  && !empty($_POST['nickname']) && !empty($_POST['data_naixement'])) {
-    $sql = "INSERT INTO usuario (email, password, nickname, data_naixement) 
-    VALUES ('" . $email . "', '" . $pass . "', '" . $nick . "', '" . $data . "')";
-    $stmt = $conn->prepare($sql);
-    
-    if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
-  echo $sql;
-} else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
-}
+      $sql = "INSERT INTO usuario (email, password, nickname, data_naixement) 
+      VALUES ('" . $email . "', '" . $pass . "', '" . $nick . "', '" . $data . "')";
+      $stmt = $conn->prepare($sql);
+      
+      if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+        echo $sql;
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
   }
 ?>
+
+
 <!DOCTYPE html>
 <html>
   <head>

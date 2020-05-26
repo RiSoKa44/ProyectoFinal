@@ -33,7 +33,7 @@ $conn->close();
   </head>
   <body>
     <?php require 'partials/header.php' ?>
-
+    
     <?php if(!empty($user)): ?>
       <a href="PaginaPrincipal.php">
         Inicio
