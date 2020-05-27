@@ -144,6 +144,13 @@ function mostrarEquipos() {
     }
 }
 
+function ocultarTodo() {
+    document.getElementById("equipos").style.display = "none";
+    document.getElementById("jugadores").style.display = "none";
+    document.getElementById("entrenador").style.display = "none";
+    document.getElementById("ByRol").style.display = "none";
+}
+
 function borrarSeleccion() {
     document.getElementById("Top").src = "./IMG/Seleccion/seleccion_jugadores.png";
     document.getElementById("Top").setAttribute("Identificador", "");
@@ -164,7 +171,7 @@ function borrarSeleccion() {
 
 function insertBBDD(jugadores) {
     var mensaje;
-    var opcion = confirm("Se ha guardado tu selección");
+    var opcion = confirm("Se va a guardar tu selección");
     if (opcion == true) {
         axios.post('./insertIntoUserSelection.php', jugadores)
             .then(response => {

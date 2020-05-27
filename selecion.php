@@ -20,7 +20,8 @@
 <div id="filtros">
 <div id="botonesSeleccion">
         <button id="guardarSel" class="btn btn-primary" onclick="guardarSeleccion()">Guardar Selección</button>
-        <button id="guardarSel" class="btn btn-primary" onclick="borrarSeleccion()">Borrar Selección</button>
+        <button id="borrarSelccion" class="btn btn-primary" onclick="borrarSeleccion()">Borrar Selección</button>
+        <button id="ocultarTodo" class="btn btn-primary" onclick="ocultarTodo()">Ocultar Todo</button>
     </div>
 <div>
     <div class="dropdown">
@@ -35,7 +36,7 @@
             <option value="Adc">ADC</option>
             <option value="Supp">SUPP</option>
         </select>
-        <button id="guardarSel" class="btn btn-primary" onclick="mostrarEquipos()">Ocultar Equipos</button>
+        <button id="guardarSel" class="btn btn-primary" onclick="mostrarEquipos()">Mostrar/Ocultar Equipos</button>
     </div>
     
 </div>
@@ -79,7 +80,7 @@
 
 <!--ByRol-->
 <div v-if="ByRol">
-    <div class="ByRol">
+    <div id="ByRol" class="ByRol">
         <div class="fichaByRol" v-for='jByRol in ByRol'>
             <h2>{{jByRol.Nombre}}</h2>
             <img class="imgjByRol pointer" v-bind:src="'./IMG/JugadoresYEntrenadores/' + jByRol.Imagen" width="100" height="100" @click="selectJugador(jByRol)"/>

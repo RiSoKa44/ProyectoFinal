@@ -30,8 +30,11 @@ $conn->close();
     <title>Esport Madness</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/logreg.css">
   </head>
   <body>
+  <div class="fullContent">
+  <img class="imgLogReg" src="IMG/Header/logo-web.png" alt="logo_esports_madness">
     <?php require 'partials/header.php' ?>
     
     <?php if(!empty($user)): ?>
@@ -42,10 +45,14 @@ $conn->close();
         Logout
       </a>
     <?php else: ?>
-      <h1>Login o Registre</h1>
+      <h1>Bienvenido a Esport Madness</h1>
+      <h2>Juega con tus amigos, crea tu equipo ideal</h2>
 
-      <a href="login.php">Login</a> o
-      <a href="signup.php">Registre</a>
+      <a href="login.php">Iniciar Sessión</a> /
+      <a href="signup.php">Registrarme</a>
     <?php endif; ?>
+   
+  </div>
+  
   </body>
 </html>

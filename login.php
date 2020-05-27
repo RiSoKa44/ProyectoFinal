@@ -38,21 +38,24 @@ $conn->close();
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/logreg.css">
   </head>
   <body>
+  <div class="fullContent">
     <?php require 'partials/header.php' ?>
 
     <?php if(!empty($message)): ?>
       <p> <?= $message ?></p>
     <?php endif; ?>
 
-    <h1>Login</h1>
-    <span>or <a href="signup.php">SignUp</a></span>
+    <h1>Iniciar Sessión</h1>
+    <span>o <a href="signup.php">Registrarme</a></span>
 
     <form action="login.php" method="POST">
       <input name="email" type="text" placeholder="Enter your email">
       <input name="password" type="password" placeholder="Enter your Password">
       <input type="submit" value="Submit">
     </form>
+  </div>
   </body>
 </html>

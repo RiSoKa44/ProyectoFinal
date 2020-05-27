@@ -37,17 +37,18 @@ if (!empty($_POST['email']) && !empty($_POST['nombre']) && !empty($_POST['apelli
     <title>SignUp</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/logreg.css">
   </head>
   <body>
-
+  <div class="fullContent">
     <?php require 'partials/header.php' ?>
 
     <?php if(!empty($message)): ?>
       <p> <?= $message ?></p>
     <?php endif; ?>
 
-    <h1>Registra't</h1>
-    <span>o <a href="login.php">Login</a></span>
+    <h1>Registrarme</h1>
+    <span>o<a href="login.php">Iniciar Sessión</a></span>
 
     <form action="signup.php" method="POST">
       <input name="email" type="text" placeholder="Enter your Email">
@@ -59,6 +60,6 @@ if (!empty($_POST['email']) && !empty($_POST['nombre']) && !empty($_POST['apelli
       <input name="confirm_password" type="password" placeholder="Confirm Password">
       <input type="submit" value="Submit">
     </form>
-
+  </div>
   </body>
 </html>

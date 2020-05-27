@@ -1,11 +1,11 @@
 function crearSala() {
-    alert("crea");
     var codigoSala = get_rand_alphanumeric(10);
     document.getElementById("codigoSala").innerHTML =
         '<div> <h2> Código de sala: </h2>' +
         '<p id="cood" code="' + codigoSala + '">' +
         codigoSala +
-        '</p><button onclick="ConfirmarSala()">Confirmar creación de Sala</button></div>';
+        '</p>' +
+        '<button onclick="confirmarSala()">Confirmar creación de Sala</button></div>';
 
 }
 
@@ -16,7 +16,8 @@ function unirseASala() {
 
 }
 
-function ConfirmarSala() {
+function confirmarSala() {
+    alert("confirmamos");
     var mises = document.getElementById("sess").getAttribute("class");
     var codigo = document.getElementById("cood").getAttribute("code");
     var datacode = [
@@ -34,4 +35,16 @@ function get_rand_alphanumeric(length) {
     rand_id = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     console.log(rand_id);
     return rand_id;
+}
+
+function mostrarMiSala() {
+    var todos;
+    axios.get('./mostrarSala.php')
+        .then(response => {
+            this.todos = response.data
+            document.getElementById("laSala").innerHTML = (response.data);
+        })
+        .catch(error => console.error(error))
+
+
 }
