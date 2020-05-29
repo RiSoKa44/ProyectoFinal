@@ -1,16 +1,6 @@
 <?php
 
-/* Conexión a BBDD */
-/*$servername = "bbdd.electronica-garcilaso.cat";
-$database = "ddb148915";
-$username = "ddb148915";
-$password = "/^cns1B/TfDP";*/
-
-/* Conexión a BBDD */
-$servername = "localhost";
-$database = "pfinal";
-$username = "root";
-$password = "";
+require 'database.php';
 
 
 // Create connection
@@ -69,9 +59,12 @@ if ($result->num_rows > 0) {
 
   header("Location: /PaginaPrincipal");
 } else {
+
+  $array = array('1'=> $misesion);
+  $jsonArray = json_encode($array);
   /* Insert */
   $sql = "INSERT INTO salasJuego (Sala , Participantes,jefeSala) 
-    VALUES ('" . $codigo . "','" . $misesion . "','" . $misesion . "')";
+    VALUES ('" . $codigo . "','" . $jsonArray . "','" . $misesion . "')";
 
 
   print_r("Añadido nuevo registro");

@@ -1,16 +1,6 @@
 <?php
 
-/* Conexión a BBDD */
-/*$servername = "bbdd.electronica-garcilaso.cat";
-$database = "ddb148915";
-$username = "ddb148915";
-$password = "/^cns1B/TfDP";*/
-
-/* Conexión a BBDD */
-$servername = "localhost";
-$database = "pfinal";
-$username = "root";
-$password = "";
+require 'database.php';
 
 
 // Create connection
@@ -32,12 +22,27 @@ $result = $conn->query($sql);
 /*Si existe Actualizamos*/
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        print_r("<h1 class='codigoSala'>" .$row['Sala'] . "</h1>");
-        print_r("<ul>");
-        $decodedParticipantes = json_decode($row['Participantes']);
+        print_r("<div class='lasala'><h1>Sala de Juego</h1> <h4 class='codigoSala'>Código de sala: " .$row['Sala'] . "</h4>");
         
+        $sql = "SELECT Nick FROM usuario  
+                WHERE id = '" . $row['JefeSala'] . "'";
+
+        $result = $conn->query($sql);
+        $row2 = $result->fetch_assoc();
+        print_r("<h3> Jefe de Sala: " . $row2['Nick'] . "</h2></div>");
+
+
+        print_r("<ul>");
+        $decodedParticipantes = json_decode($row['Participantes']);     
+        foreach ($decodedParticipantes as $key => $value) {
+          $sqlPart = "SELECT Nick FROM usuario  
+                WHERE id = '" . $value . "'";
+
+        $resultPart = $conn->query($sqlPart);
+        $rowPart = $resultPart->fetch_assoc();
+        print_r("<h3> # " . $rowPart['Nick'] . "</h2></div>");
+        }
         print_r("</ul>");
-        print_r("<h2>" . $row['JefeSala'] . "</h2>");
     }
     json_encode($result);
 } else{

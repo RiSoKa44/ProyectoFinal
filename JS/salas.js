@@ -1,8 +1,8 @@
 function crearSala() {
     var codigoSala = get_rand_alphanumeric(10);
-    document.getElementById("codigoSala").innerHTML =
+    document.getElementById("laSala").innerHTML =
         '<div> <h2> Código de sala: </h2>' +
-        '<p id="cood" code="' + codigoSala + '">' +
+        '<p id="cood" class="cood" code="' + codigoSala + '">' +
         codigoSala +
         '</p>' +
         '<button onclick="confirmarSala()">Confirmar creación de Sala</button></div>';
@@ -11,9 +11,22 @@ function crearSala() {
 
 function unirseASala() {
     alert("unir");
-    document.getElementById("codigoSala").innerHTML =
-        '<div><label>Introduce el código de sala<input type="text" id="Name" name="Name"/></label><button>Unirse</button></div>';
+    document.getElementById("laSala").innerHTML =
+        '<div><label id="labCod">Introduce el código de sala<input type="text" id="codSala" name="Name"/></label><button onclick="confirmarUnion()">Unirse</button></div>';
+}
 
+function confirmarUnion() {
+    var codigoSalaUnion = document.getElementById("codSala").value;
+    var todos;
+    var someData = [
+        { codigo: codigoSalaUnion },
+    ];
+    axios.post('./unirseSala.php', someData)
+        .then(response => {
+            this.todos = response.data
+            document.getElementById("laSala").innerHTML = (response.data);
+        })
+        .catch(error => console.error(error))
 }
 
 function confirmarSala() {

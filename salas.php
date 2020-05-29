@@ -18,9 +18,11 @@ print_r("<h1 id='sess' class='". $misesion . "'></h1>");
     <?php
     require "database.php";
 
-    $sql = "SELECT JefeSala FROM salasJuego 
+    $sql = "SELECT JefeSala FROM SalasJuego 
      WHERE JefeSala = '" . $misesion . "'";
+
     $result = $conn->query($sql);
+    
     if($result->num_rows > 0){
         print_r('<button id="crearSala"><a class="nav-link" onclick="mostrarMiSala()">Mostrar Mi Sala</a></button>');
     }else{
@@ -32,7 +34,7 @@ print_r("<h1 id='sess' class='". $misesion . "'></h1>");
         <button id="unirseSala"><a class="nav-link" onclick="unirseASala()">Unirse a Sala</a></button>
         
     </div>
-    <div id="laSala"></div>
+    <div id="laSala" class="salaInfo"></div>
     
 </body>
 

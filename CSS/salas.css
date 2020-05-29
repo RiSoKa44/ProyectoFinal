@@ -5,3 +5,18 @@
 .codigoSalas {
     text-align: center;
 }
+
+.salaInfo {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.cood {
+    font-size: 3em;
+    color: red;
+}
+
+.msgErrorUnion {
+    font-size: 3em;
+    color: red;
+}
