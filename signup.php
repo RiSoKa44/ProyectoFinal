@@ -5,7 +5,9 @@ $message = '';
 $email = $_POST['email'];
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
+
 $pass = $_POST['password'];
+
 $nick= $_POST['nick'];
 $data= $_POST['data_naixement'];
 
@@ -17,8 +19,15 @@ if (!empty($_POST['email']) && !empty($_POST['nombre']) && !empty($_POST['apelli
     if ($result->num_rows > 0) {
       print_r("<h2 style='color:#FF0000'>Email en uso, pruebe otro </h2>");
     }else{
+      $cifrado="AES-256-OFB";
+      $ivlenght=openssl_cipher_iv_length($cifrado);
+      $options=0;
+      $encriptaiv='1234567891011121';
+      $encriptkey="EsportMadness";
+      $passencript=openssl_encrypt($pass, $cifrado, $encriptkey, $options, $encriptaiv);
+
       $sql = "INSERT INTO usuario (email, nombre, apellido, password, nick, data_naixement, avatar) 
-         VALUES ('" . $email . "', '" . $nombre . "', '" . $apellido . "', '" . $pass . "', '" . $nick . "', '" . $data . "', 'https://thumbs.dreamstime.com/b/icono-de-avatar-s%C3%ADmbolo-plano-aislado-en-blanco-124920496.jpg')";
+         VALUES ('" . $email . "', '" . $nombre . "', '" . $apellido . "', '" . $passencript . "', '" . $nick . "', '" . $data . "', 'https://thumbs.dreamstime.com/b/icono-de-avatar-s%C3%ADmbolo-plano-aislado-en-blanco-124920496.jpg')";
         $stmt = $conn->prepare($sql);
         if ($conn->query($sql) === TRUE) {
           print_r("<h2 style='color:MediumSeaGreen' >Usuario registrado correctamente!</h2><p>Puede realizar el login</p>");
@@ -63,3 +72,6 @@ if (!empty($_POST['email']) && !empty($_POST['nombre']) && !empty($_POST['apelli
   </div>
   </body>
 </html>
+
+
+<!--$pass_cifrada= password_hash($pass, PASSWORD_DEFAULT);-->

@@ -11,8 +11,16 @@
 
   if (!empty($_POST['email']) && !empty($_POST['password'])) {
 
-     $sql = "SELECT id, email, password FROM usuario WHERE email = '" . $email . "' and password='" .$password . "' ";
+    $cifrado="AES-256-OFB";
+    $ivlenght=openssl_cipher_iv_length($cifrado);
+    $options=0;
+    $encriptaiv='1234567891011121';
+    $encriptkey="EsportMadness";
+    $passencript=openssl_encrypt($password, $cifrado, $encriptkey, $options, $encriptaiv);
 
+    
+    $sql = "SELECT id, email, password FROM usuario WHERE email = '" . $email . "' and password='" .$passencript . "' ";
+    print_r($sql);
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -24,8 +32,8 @@
             header("Location: /PaginaPrincipal.php");
         }
     } else {
-    echo "Contraseña o e-mail incorrecte";
-}
+        echo "Contraseña o e-mail incorrecte";
+    }
 $conn->close();
 } 
 ?>
