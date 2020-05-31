@@ -21,8 +21,6 @@ print_r("<h1 id='sess' class='". $misesion . "'></h1>");
             <div id="avatar"><img v-bind:src="pUs.Avatar" alt="Avatar Usuario" height="200px" width="300px"></div>
                 <h1>{{pUs.Nick}}</h1>
                 <h2>Nombre: {{pUs.Nombre}} {{pUs.Apellido}}</h2>
-                <h2 v-if="1">Sexo: Hombre</h2>
-                <h2 v-else>Sexo: Mujer</h2>
                 <h2>Fecha de Nacimiento: {{pUs.fecha_nacimiento}} </h2>
             </div>
             <button id="mostrarSelect"><a class="nav-link" @click="getJugadoresSelecteds()">Ver Mi Selección</a></button>
