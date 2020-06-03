@@ -62,8 +62,8 @@ var Fantasy = new Vue({
         /*Api: 
          * metodo para obtención de Jugadores 
          */
-        getJugadores: function(ID) {
-            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Jugador?filter=Equipo,eq,' + ID)
+        getJugadores: function(ID, IDliga) {
+            axios.get('http://esports-madness.electronica-garcilaso.cat/API/api.php/records/Jugador?filter=Equipo,eq,' + ID + '&&filter2=Liga,eq,' + IDliga)
                 .then(response => {
                     this.jugadores = response.data.records,
                         console.table(response.data);

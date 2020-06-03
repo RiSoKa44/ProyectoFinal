@@ -20,6 +20,7 @@
                 <div v-for='liga in ligas'>
                     <h2>{{liga.Nombre}}</h2>
                     <img class="imgLigas pointer" v-bind:src="'./IMG/Ligas/' + liga.Imagen" @click="getEquipos(liga.ID)"/>
+                    <p id="ligaid" class="unsee">{{liga.ID}}</p>
                 </div>
             </div>
             <br>
