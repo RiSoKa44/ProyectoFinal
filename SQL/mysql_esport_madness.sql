@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: proxysql-01.dd.scip.local
--- Tiempo de generación: 03-06-2020 a las 21:13:56
+-- Tiempo de generación: 09-06-2020 a las 22:33:07
 -- Versión del servidor: 10.4.13-MariaDB-1:10.4.13+maria~buster
--- Versión de PHP: 7.4.3
+-- Versión de PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -333,7 +332,8 @@ INSERT INTO `SalasJuego` (`ID`, `Sala`, `Participantes`, `JefeSala`) VALUES
 (16, '9dzcdebslo81mpwu74w98k', '7', 7),
 (15, 'ee38uvfg11dha4ixbrww0j', '5', 5),
 (8, 'lghylty0b0qwl583bdjw4h', '6', 6),
-(19, 'e574nj3e1sahj91u0xw7j6', '{\"1\":\"11\",\"2\":\"8\"}', 11);
+(19, 'e574nj3e1sahj91u0xw7j6', '{\"1\":\"11\",\"2\":\"8\"}', 11),
+(20, 'bl5dtmzeefnfz48axa0eks', '{\"1\":\"12\"}', 12);
 
 -- --------------------------------------------------------
 
@@ -356,10 +356,11 @@ CREATE TABLE `SeleccionJugador` (
 --
 
 INSERT INTO `SeleccionJugador` (`ID`, `Usuario`, `IDTOP`, `IDJUNGLA`, `IDMID`, `IDADC`, `IDSUPP`) VALUES
+(36, 12, 591, 587, 588, 589, 595),
 (35, 7, 6, 12, 43, 24, 50),
 (34, 5, 31, 32, 33, 34, 35),
 (33, 2, 6, 7, 8, 9, 10),
-(32, 8, 1, 22, 8, 19, 15),
+(32, 8, 596, 587, 583, 9, 55),
 (31, 3, 16, 2, 18, 19, 50),
 (29, 1, 31, 47, 48, 4, 5),
 (30, 4, 1, 2, 3, 4, 5);
@@ -396,33 +397,9 @@ INSERT INTO `usuario` (`id`, `email`, `Nombre`, `Apellido`, `password`, `Nick`, 
 (8, 'admin', 'admin', 'admin', 'Kzx0wjo=', 'admin', '1996-10-31', 'https://thumbs.dreamstime.com/b/icono-de-avatar-s%C3%ADmbolo-plano-aislado-en-blanco-124920496.jpg'),
 (9, 'admin2', 'admin2', 'admin2', 'Kzx0wjo=', 'admin2', '1996-12-31', 'https://thumbs.dreamstime.com/b/icono-de-avatar-s%C3%ADmbolo-plano-aislado-en-blanco-124920496.jpg'),
 (10, 'prova3@gmail.com', 'oscar2', 'ortega2', 'e2oq', 'oscar1234', '2000-02-22', 'https://thumbs.dreamstime.com/b/icono-de-avatar-s%C3%ADmbolo-plano-aislado-en-blanco-124920496.jpg'),
-(11, 'qwert', '123', '123', 'e2oq', '123', '2000-02-22', 'https://thumbs.dreamstime.com/b/icono-de-avatar-s%C3%ADmbolo-plano-aislado-en-blanco-124920496.jpg');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `Usuarios`
---
-
-CREATE TABLE `Usuarios` (
-  `ID` int(11) NOT NULL,
-  `Nombre` varchar(40) NOT NULL,
-  `Apellido` varchar(40) NOT NULL,
-  `Nick` varchar(40) NOT NULL,
-  `Sexo` int(11) NOT NULL,
-  `País` varchar(40) NOT NULL,
-  `Avatar` varchar(100) NOT NULL,
-  `Fecha_Cumpleanos` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `Usuarios`
---
-
-INSERT INTO `Usuarios` (`ID`, `Nombre`, `Apellido`, `Nick`, `Sexo`, `País`, `Avatar`, `Fecha_Cumpleanos`) VALUES
-(1, 'Javier', 'Suárez', 'RiSoKa44', 0, 'España', 'https://www.cinemascomics.com/wp-content/uploads/2020/04/lucifer-tom-ellis.jpg', '1996-10-31'),
-(2, 'Oscar', 'Mis Huevos', 'Oscarsito', 1, 'España', 'https://images.vexels.com/media/users/3/145908/preview2/52eabf633ca6414e60a7677b0b917d92-creador-de-', '2018-05-08'),
-(3, 'AdminGod', 'El Borracho', 'OmniRich', 0, 'España', 'https://images.vexels.com/media/users/3/145908/preview2/52eabf633ca6414e60a7677b0b917d92-creador-de-', '2020-05-12');
+(11, 'qwert', '123', '123', 'e2oq', '123', '2000-02-22', 'https://thumbs.dreamstime.com/b/icono-de-avatar-s%C3%ADmbolo-plano-aislado-en-blanco-124920496.jpg'),
+(12, 'a@a.com', 'a', 'a', 'Kw==', 'ElverGalarga', '1990-01-01', 'https://thumbs.dreamstime.com/b/icono-de-avatar-s%C3%ADmbolo-plano-aislado-en-blanco-124920496.jpg'),
+(13, 'a19rogcalrul@inspedralbes.cat', 'r', 'c', 'ODd+zibNaI9F', 'rc', '2000-06-11', 'https://thumbs.dreamstime.com/b/icono-de-avatar-s%C3%ADmbolo-plano-aislado-en-blanco-124920496.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -489,12 +466,6 @@ ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `Usuarios`
---
-ALTER TABLE `Usuarios`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -544,25 +515,19 @@ ALTER TABLE `ResultadosPartido`
 -- AUTO_INCREMENT de la tabla `SalasJuego`
 --
 ALTER TABLE `SalasJuego`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `SeleccionJugador`
 --
 ALTER TABLE `SeleccionJugador`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT de la tabla `Usuarios`
---
-ALTER TABLE `Usuarios`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
